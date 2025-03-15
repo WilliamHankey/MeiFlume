@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface ServiceProps {
   id: string;
@@ -142,9 +143,11 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-                <Button className="bg-brand-teal hover:bg-brand-teal/90">
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
+                  <Link to={`/services/${service.id}`}>
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </motion.div>
               
@@ -183,9 +186,11 @@ const Services = () => {
             <p className="text-xl text-blue-200 mb-8">
               Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
             </p>
-            <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90">
-              Get a Free Consultation
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90" asChild>
+              <Link to="/contact">
+                Get a Free Consultation
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </motion.div>
         </div>
