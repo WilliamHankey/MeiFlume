@@ -76,7 +76,7 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-brand-teal/20 to-brand-dark/20 rounded-2xl transform rotate-3" />
               <img 
-                src="/lovable-uploads/663cb78e-46eb-4599-b5f4-544bd0d2321c.png"
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&auto=format&fit=crop&q=80"
                 alt="Digital transformation" 
                 className="rounded-2xl shadow-xl relative z-10"
               />

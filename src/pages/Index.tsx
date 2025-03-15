@@ -7,6 +7,7 @@ import ClientLogos from '@/components/ClientLogos';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioItem from '@/components/PortfolioItem';
 import TestimonialSlider from '@/components/TestimonialSlider';
+import ContactCTA from '@/components/ContactCTA';
 import { Button } from '@/components/ui/button';
 import { portfolioItems } from '@/data/portfolioData';
 
@@ -248,6 +249,9 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
+      <ContactCTA />
+
+      {/* Quick Contact Form Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <motion.div
@@ -306,11 +310,9 @@ const Index = () => {
               ></textarea>
             </div>
             <div className="flex justify-center md:justify-end">
-              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white" asChild>
-                <Link to="/contact">
-                  Get a Quote
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white">
+                Get a Quote
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </motion.div>

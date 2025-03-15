@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import ContactCTA from '@/components/ContactCTA';
 import { portfolioItems } from '@/data/portfolioData';
 
 const categories = [
@@ -100,28 +101,7 @@ const Portfolio = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-brand-teal text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Create Something Amazing Together</h2>
-            <p className="text-xl text-blue-200 mb-8">
-              Ready to start your next project? Contact us to discuss how we can help bring your vision to life.
-            </p>
-            <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
-              <Link to="/contact">
-                Start Your Project
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <ContactCTA />
     </div>
   );
 };

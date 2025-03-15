@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
 
 interface PortfolioItemProps {
   title: string;
