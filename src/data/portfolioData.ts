@@ -4,7 +4,7 @@ export const portfolioItems = [
     title: "TechStart Mobile App",
     category: "Mobile Development",
     slug: "techstart-mobile-app",
-    image: "https://cdn.dribbble.com/userupload/12020927/file/original-edaa5fcf8b9eee35c1e8b9a0b4ed5c9a.png?resize=752x",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
     description: "A comprehensive mobile application for a tech startup that helps users track their productivity and manage their tasks effectively.",
     client: "TechStart Inc.",
     challenge: "TechStart needed a mobile solution that would allow their users to effectively track productivity, manage tasks, and collaborate with team members. The application needed to be intuitive, fast, and work seamlessly across iOS and Android platforms.",
@@ -33,16 +33,16 @@ export const portfolioItems = [
     ],
     technologies: ["React Native", "Node.js", "Express", "MongoDB", "AWS"],
     gallery: [
-      "https://cdn.dribbble.com/userupload/12020927/file/original-edaa5fcf8b9eee35c1e8b9a0b4ed5c9a.png?resize=752x",
-      "https://cdn.dribbble.com/userupload/12051879/file/original-52a64afadac1e3cc46d3b10a5a61c7fa.jpg?resize=752x",
-      "https://cdn.dribbble.com/userupload/12040309/file/original-e38a53fa99e6a0dacce98c444f4ff0f1.png?resize=752x"
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=3271&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=3270&auto=format&fit=crop"
     ]
   },
   {
     title: "Innovate Solutions Website",
     category: "Web Development",
     slug: "innovate-solutions-website",
-    image: "https://cdn.dribbble.com/userupload/12044576/file/original-f96ab42de51e6ad11a3e88c4ab28cd12.png?resize=752x",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=3269&auto=format&fit=crop",
     description: "A modern, responsive website for a consulting firm featuring a custom CMS, interactive elements, and optimized performance.",
     client: "Innovate Solutions",
     challenge: "Innovate Solutions needed a complete website redesign that would showcase their consulting services, improve user engagement, and incorporate a content management system for easy updates. The site needed to be fast, mobile-responsive, and optimized for search engines.",
@@ -71,16 +71,16 @@ export const portfolioItems = [
     ],
     technologies: ["React", "Next.js", "Tailwind CSS", "Strapi CMS", "Vercel"],
     gallery: [
-      "https://cdn.dribbble.com/userupload/12044576/file/original-f96ab42de51e6ad11a3e88c4ab28cd12.png?resize=752x",
-      "https://cdn.dribbble.com/userupload/11993674/file/original-18fa2e3d2f52dc16fe9f2affe9bbd7d4.png?resize=752x",
-      "https://cdn.dribbble.com/userupload/12024202/file/original-53d25a7fe2ddb92fe3cf02052bee1e48.png?resize=752x"
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=3269&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=3543&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=4076&auto=format&fit=crop"
     ]
   },
   {
     title: "Global Connect Brand Identity",
     category: "Brand Design",
     slug: "global-connect-brand-identity",
-    image: "https://cdn.dribbble.com/userupload/12040309/file/original-e38a53fa99e6a0dacce98c444f4ff0f1.png?resize=752x",
+    image: "https://images.unsplash.com/photo-1560830889-3abe577e4fe3?q=80&w=2340&auto=format&fit=crop",
     description: "A complete brand identity package including logo design, color palette, typography, and brand guidelines.",
     client: "Global Connect",
     challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",
@@ -109,9 +109,9 @@ export const portfolioItems = [
     ],
     technologies: ["Adobe Creative Suite", "Figma", "Brand Strategy", "Market Research"],
     gallery: [
-      "https://cdn.dribbble.com/userupload/12040309/file/original-e38a53fa99e6a0dacce98c444f4ff0f1.png?resize=752x",
-      "https://cdn.dribbble.com/userupload/12051879/file/original-52a64afadac1e3cc46d3b10a5a61c7fa.jpg?resize=752x",
-      "https://cdn.dribbble.com/userupload/12020927/file/original-edaa5fcf8b9eee35c1e8b9a0b4ed5c9a.png?resize=752x"
+      "https://images.unsplash.com/photo-1560830889-3abe577e4fe3?q=80&w=2340&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=3270&auto=format&fit=crop", 
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop"
     ]
   }
 ];
