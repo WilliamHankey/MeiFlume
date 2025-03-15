@@ -2,6 +2,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-teal/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -left-20 w-60 h-60 bg-brand-blue/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 -left-20 w-60 h-60 bg-brand-dark/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
@@ -31,8 +32,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <span className="text-balance">Validate, Design & Build </span>
-              <span className="text-brand-teal">World-Class Digital Products</span>
+              <span className="text-balance">Let's Build Something </span>
+              <span className="text-brand-teal">Great Together</span>
             </motion.h1>
             
             <motion.p 
@@ -51,12 +52,16 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white" asChild>
+                <Link to="/contact">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                View Our Work
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/portfolio">
+                  View Our Work
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -69,10 +74,10 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-brand-teal/20 rounded-2xl transform rotate-3" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand-teal/20 to-brand-dark/20 rounded-2xl transform rotate-3" />
               <img 
-                src="/lovable-uploads/4741d967-1c02-4d95-9a50-d39a8ed5c436.png"
-                alt="Team discussing digital products" 
+                src="/lovable-uploads/663cb78e-46eb-4599-b5f4-544bd0d2321c.png"
+                alt="Digital transformation" 
                 className="rounded-2xl shadow-xl relative z-10"
               />
             </div>

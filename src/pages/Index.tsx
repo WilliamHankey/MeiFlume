@@ -1,12 +1,14 @@
 
 import { motion } from 'framer-motion';
 import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioItem from '@/components/PortfolioItem';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import { Button } from '@/components/ui/button';
+import { portfolioItems } from '@/data/portfolioData';
 
 const serviceItems = [
   {
@@ -14,56 +16,35 @@ const serviceItems = [
     title: "Software Development",
     description: "Custom software solutions, from mobile apps to enterprise platforms, tailored to your business needs.",
     link: "/services#software",
-    color: "bg-blue-500"
+    color: "bg-brand-teal"
   },
   {
     icon: Globe,
     title: "Web Development",
     description: "Responsive, fast-loading websites and web applications built with cutting-edge technologies.",
     link: "/services#web",
-    color: "bg-indigo-500"
+    color: "bg-brand-dark"
   },
   {
     icon: PenTool,
     title: "Graphic Design",
     description: "Brand identity, UI/UX design, and visual assets that communicate your brand's unique value.",
     link: "/services#design",
-    color: "bg-purple-500"
+    color: "bg-brand-teal"
   },
   {
     icon: BrainCircuit,
     title: "Brand Strategy",
     description: "Strategic positioning and messaging that helps your brand stand out in a crowded marketplace.",
     link: "/services#brand",
-    color: "bg-pink-500"
+    color: "bg-brand-dark"
   },
   {
     icon: MessageSquare,
     title: "Social Media Services",
     description: "Content creation, community management, and growth strategies for major social platforms.",
     link: "/services#social",
-    color: "bg-rose-500"
-  }
-];
-
-const portfolioItems = [
-  {
-    title: "TechStart Mobile App",
-    category: "Mobile Development",
-    image: "https://cdn.dribbble.com/userupload/12020927/file/original-edaa5fcf8b9eee35c1e8b9a0b4ed5c9a.png?resize=752x",
-    link: "/portfolio/techstart"
-  },
-  {
-    title: "Innovate Solutions Website",
-    category: "Web Development",
-    image: "https://cdn.dribbble.com/userupload/12044576/file/original-f96ab42de51e6ad11a3e88c4ab28cd12.png?resize=752x",
-    link: "/portfolio/innovate"
-  },
-  {
-    title: "Global Connect Brand Identity",
-    category: "Brand Design",
-    image: "https://cdn.dribbble.com/userupload/12040309/file/original-e38a53fa99e6a0dacce98c444f4ff0f1.png?resize=752x",
-    link: "/portfolio/globalconnect"
+    color: "bg-brand-teal"
   }
 ];
 
@@ -86,6 +67,9 @@ const features = [
 ];
 
 const Index = () => {
+  // Use only the first 3 portfolio items for the homepage
+  const featuredProjects = portfolioItems.slice(0, 3);
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -164,7 +148,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-brand-blue text-white">
+      <section className="py-20 bg-brand-teal text-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <motion.div
@@ -186,9 +170,11 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
+                <Link to="/contact">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </motion.div>
           </div>
@@ -212,13 +198,13 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioItems.map((item, index) => (
+            {featuredProjects.map((item, index) => (
               <PortfolioItem
                 key={item.title}
                 title={item.title}
                 category={item.category}
                 image={item.image}
-                link={item.link}
+                slug={item.slug}
                 index={index}
               />
             ))}
@@ -231,9 +217,11 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <Button variant="outline" size="lg">
-              View All Projects
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </motion.div>
         </div>
@@ -256,6 +244,76 @@ const Index = () => {
           </motion.div>
 
           <TestimonialSlider />
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great Together</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Tell us about your project and we'll get back to you within 24 hours
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-xl shadow-lg p-8 md:p-10 border"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div>
+                <label htmlFor="quick-name" className="block text-sm font-medium mb-2">
+                  Your Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="quick-name"
+                  type="text"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="quick-email" className="block text-sm font-medium mb-2">
+                  Your Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="quick-email"
+                  type="email"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
+                  placeholder="Enter your email"
+                />
+              </div>
+            </div>
+            <div className="mb-8">
+              <label htmlFor="quick-message" className="block text-sm font-medium mb-2">
+                Your Message <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="quick-message"
+                rows={4}
+                className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
+                placeholder="Tell us about your project"
+              ></textarea>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white" asChild>
+                <Link to="/contact">
+                  Get a Quote
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

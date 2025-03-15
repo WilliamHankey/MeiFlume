@@ -28,7 +28,7 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Blog', path: '/blog' },
+    { name: 'Case Studies', path: '/portfolio' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -73,7 +73,11 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          <Button className="bg-brand-teal hover:bg-brand-teal/90">Get a Quote</Button>
+          <Button className="bg-black hover:bg-black/90 text-white rounded-md" asChild>
+            <Link to="/contact">
+              Get a Quote
+            </Link>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -108,8 +112,10 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
-          <Button className="mt-4 bg-brand-teal hover:bg-brand-teal/90">
-            Get a Quote
+          <Button className="mt-4 bg-black hover:bg-black/90 text-white rounded-md">
+            <Link to="/contact">
+              Get a Quote
+            </Link>
           </Button>
         </div>
       </div>
