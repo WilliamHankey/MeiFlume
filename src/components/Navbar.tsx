@@ -28,7 +28,6 @@ const Navbar = () => {
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Case Studies', path: '/portfolio' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -51,7 +50,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 z-10">
           <img 
-            src="/lovable-uploads/2ba32958-2f41-485a-8c47-d8a7965f82cd.png" 
+            src="/lovable-uploads/MeiFlumeLogo.png" 
             alt="MeiFlume Logo" 
             className="h-10 w-auto"
           />

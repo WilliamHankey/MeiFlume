@@ -2,11 +2,12 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-  { name: 'Google', src: 'https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/NEWadidas-logo-black-image_tcm221-67535.png' },
-  { name: 'Microsoft', src: 'https://cdn.britannica.com/89/147189-050-A243CC79/Google-Mountain-View-headquarters-California.jpg' },
-  { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-  { name: 'Apple', src: 'https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-dallas-shootings-don-add-are-speech-zones-used-4.png' },
-  { name: 'Spotify', src: 'https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png' },
+  { name: 'FiveLens', src: 'https://fivelens.co.za/wp-content/uploads/2021/08/Asset-2FL-logo-300x109.png' },
+  { name: 'New-U', src: '/lovable-uploads/NewULogo.png' },
+  { name: 'Meer Consulting', src: '/lovable-uploads/MeerConsultingLogo.png' },
+  { name: 'Jeanne Meer Consulting', src: '/lovable-uploads/JeanneMeerConsultingLogo.png' },
+  { name: 'U&IPrinting', src: 'https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-dallas-shootings-don-add-are-speech-zones-used-4.png' },
+  { name: 'Alenors Catering', src: 'https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png' },
 ];
 
 const ClientLogos = () => {
