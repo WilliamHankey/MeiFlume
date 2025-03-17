@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,9 +6,11 @@ import ClientLogos from '@/components/ClientLogos';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioItem from '@/components/PortfolioItem';
 import TestimonialSlider from '@/components/TestimonialSlider';
+import BlogSection from '@/components/BlogSection';
 import ContactCTA from '@/components/ContactCTA';
 import { Button } from '@/components/ui/button';
 import { portfolioItems } from '@/data/portfolioData';
+import { getLatestBlogs } from '@/data/blogData';
 
 const serviceItems = [
   {
@@ -70,6 +71,9 @@ const features = [
 const Index = () => {
   // Use only the first 3 portfolio items for the homepage
   const featuredProjects = portfolioItems.slice(0, 3);
+  
+  // Get latest blog posts
+  const latestBlogs = getLatestBlogs(3);
 
   return (
     <div className="bg-white">
@@ -227,6 +231,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Blog Section */}
+      <BlogSection blogs={latestBlogs} />
 
       {/* Testimonials Section */}
       <section className="section-padding bg-brand-gray">
