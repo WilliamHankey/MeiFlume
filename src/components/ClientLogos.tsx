@@ -6,8 +6,8 @@ const logos = [
   { name: 'New-U', src: '/lovable-uploads/NewULogo.png' },
   { name: 'Meer Consulting', src: '/lovable-uploads/MeerConsultingLogo.png' },
   { name: 'Jeanne Meer Consulting', src: '/lovable-uploads/JeanneMeerConsultingLogo.png' },
-  { name: 'U&IPrinting', src: 'https://www.freepnglogos.com/uploads/apple-logo-png/apple-logo-png-dallas-shootings-don-add-are-speech-zones-used-4.png' },
-  { name: 'Alenors Catering', src: 'https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png' },
+  { name: 'U&IPrinting', src: '/lovable-uploads/U&IPrintingLogo.png' },
+  { name: 'Alenors Catering', src: '/lovable-uploads/AlenorsCateringLogo.png' },
 ];
 
 const ClientLogos = () => {
