@@ -6,14 +6,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-blue text-white pt-16 pb-8">
+    <footer className="bg-brand-dark text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
               <img 
-                src="/lovable-uploads/2ba32958-2f41-485a-8c47-d8a7965f82cd.png" 
+                src="/lovable-uploads/MeiFlumeDarkLogo.png" 
                 alt="MeiFlume Logo" 
                 className="h-12 w-auto mb-4"
               />

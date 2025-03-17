@@ -148,7 +148,7 @@ const About = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Us?</h2>
-            <p className="text-xl text-blue-200 mb-8">
+            <p className="text-xl text-neutral-950 mb-8">
               Let's discuss how we can help transform your digital presence and achieve your business goals.
             </p>
             <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90">

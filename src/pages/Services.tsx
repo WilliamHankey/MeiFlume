@@ -173,7 +173,7 @@ const Services = () => {
       ))}
       
       {/* CTA Section */}
-      <section className="py-20 bg-brand-blue text-white">
+      <section className="py-20 bg-brand-teal text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -183,10 +183,10 @@ const Services = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
-            <p className="text-xl text-blue-200 mb-8">
+            <p className="text-xl text-white/80 mb-8">
               Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
             </p>
-            <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90" asChild>
+            <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
               <Link to="/contact">
                 Get a Free Consultation
                 <ArrowRight className="ml-2 h-4 w-4" />

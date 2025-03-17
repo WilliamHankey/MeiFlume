@@ -352,7 +352,7 @@ const Contact = () => {
                       <Button
                         type="submit"
                         disabled={isSubmitting || isSubmitted}
-                        className="px-8 py-3 h-auto bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white rounded-md flex items-center justify-center gap-2 transition-all"
+                        className="px-8 py-3 h-auto bg-brand-teal hover:bg-brand-teal/90 text-white rounded-md flex items-center justify-center gap-2 transition-all"
                       >
                         {isSubmitting ? (
                           <>
