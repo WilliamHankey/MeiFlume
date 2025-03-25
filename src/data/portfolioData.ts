@@ -1,14 +1,14 @@
 
 export const portfolioItems = [
   {
-    title: "TechStart Mobile App",
-    category: "Mobile Development",
+    title: "U&I Printing Ordering System",
+    category: "E-commerce / Design Marketplace",
     slug: "techstart-mobile-app",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
-    description: "A comprehensive mobile application for a tech startup that helps users track their productivity and manage their tasks effectively.",
-    client: "TechStart Inc.",
-    challenge: "TechStart needed a mobile solution that would allow their users to effectively track productivity, manage tasks, and collaborate with team members. The application needed to be intuitive, fast, and work seamlessly across iOS and Android platforms.",
-    solution: "We developed a cross-platform mobile application using React Native that incorporated productivity tracking, task management, team collaboration features, and real-time analytics. The app featured an intuitive UI design, offline functionality, and seamless cloud synchronization.",
+    description: "A user-friendly web application for browsing and ordering custom designs, featuring a seamless cart experience and email notifications for order confirmations.",
+    client: "U&I Printing",
+    challenge: "The main challenge was to create a seamless user experience for browsing and ordering designs while ensuring that the application could handle real-time data from the Sanity CMS and send order notifications effectively.",
+    solution: "- Implemented a robust state management system using React's Context API to manage cart state. - Integrated Sanity as a headless CMS to fetch design data dynamically. - Utilized EmailJS to handle email notifications for order confirmations.",
     timeline: "4 months",
     results: [
       {
@@ -25,13 +25,12 @@ export const portfolioItems = [
       }
     ],
     services: [
-      "UX/UI Design",
-      "Mobile App Development",
-      "Backend API Development",
-      "Quality Assurance",
-      "Deployment & Maintenance"
+      "Web Development",
+      "UI/UX Design",
+      "API Integration",
+      "Email Notification Setup"
     ],
-    technologies: ["React Native", "Node.js", "Express", "MongoDB", "AWS"],
+    technologies: ["React", "Vite", "TypeScript", "Sanoty (Headless CMS)", "EmailJS", "Contect API", "Tailwind CSS"],
     gallery: [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=3271&auto=format&fit=crop",
