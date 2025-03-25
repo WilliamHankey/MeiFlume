@@ -4,7 +4,7 @@ export const portfolioItems = [
     title: "U&I Printing Ordering System",
     category: "E-commerce / Design Marketplace",
     slug: "techstart-mobile-app",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
+    image: "/assets/U&IPrinting/Cover.png",
     description: "A user-friendly web application for browsing and ordering custom designs, featuring a seamless cart experience and email notifications for order confirmations.",
     client: "U&I Printing",
     challenge: "The main challenge was to create a seamless user experience for browsing and ordering designs while ensuring that the application could handle real-time data from the Sanity CMS and send order notifications effectively.",
@@ -30,7 +30,7 @@ export const portfolioItems = [
       "API Integration",
       "Email Notification Setup"
     ],
-    technologies: ["React", "Vite", "TypeScript", "Sanoty (Headless CMS)", "EmailJS", "Contect API", "Tailwind CSS"],
+    technologies: ["React", "Vite", "TypeScript", "Sanity (Headless CMS)", "EmailJS", "Context API", "Tailwind CSS"],
     gallery: [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=3271&auto=format&fit=crop",
