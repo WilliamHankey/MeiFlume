@@ -1,42 +1,57 @@
-export const portfolioItems = [
+export interface PortfolioItem {
+  id: string;
+  title: string;
+  category: string;
+  slug: string;
+  image: string;
+  description: string;
+  client: string;
+  challenge: string;
+  solution: string;
+  timeline: string;
+  date: string;
+  results: {
+    stat: string;
+    description: string;
+  }[];
+  services: string[];
+  technologies: string[];
+  gallery: string[];
+}
+
+export const portfolioItems: PortfolioItem[] = [
   {
-    title: "U&I Printing Ordering System",
-    category: "E-commerce / Design Marketplace",
-    slug: "techstart-mobile-app",
+    id: "ui-printing",
+    title: "U&I Printing Website Redesign",
+    category: "Web Development",
+    slug: "ui-printing",
     image: "/assets/U&IPrinting/Cover.png",
-    description: "A user-friendly web application for browsing and ordering custom designs, featuring a seamless cart experience and email notifications for order confirmations.",
+    description: "A modern, responsive website redesign for U&I Printing, focusing on user experience and conversion optimization.",
     client: "U&I Printing",
-    challenge: "The main challenge was to create a seamless user experience for browsing and ordering designs while ensuring that the application could handle real-time data from the Sanity CMS and send order notifications effectively.",
-    solution: "- Implemented a robust state management system using React's Context API to manage cart state. - Integrated Sanity as a headless CMS to fetch design data dynamically. - Utilized EmailJS to handle email notifications for order confirmations.",
-    timeline: "4 months",
+    challenge: "Create a modern, user-friendly website that showcases printing services effectively.",
+    solution: "Developed a responsive design with clear service categorization and an intuitive quote request system.",
+    timeline: "3 months",
+    date: "2024-03-01",
     results: [
       {
-        stat: "87%",
-        description: "Increase in team productivity"
+        stat: "40%",
+        description: "Increase in online quote requests"
       },
       {
-        stat: "35k+",
-        description: "App downloads in first month"
-      },
-      {
-        stat: "4.8/5",
-        description: "App store rating"
+        stat: "25%",
+        description: "Improvement in user engagement"
       }
     ],
-    services: [
-      "Web Development",
-      "UI/UX Design",
-      "API Integration",
-      "Email Notification Setup"
-    ],
-    technologies: ["React", "Vite", "TypeScript", "Sanity (Headless CMS)", "EmailJS", "Context API", "Tailwind CSS"],
+    services: ["Web Development", "UI/UX Design", "Content Strategy"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
     gallery: [
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=3270&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=3271&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=3270&auto=format&fit=crop"
+      "/assets/U%26IPrinting/Home.png",
+      "/assets/U%26IPrinting/Services.png",
+      "/assets/U%26IPrinting/Contact.png"
     ]
   },
   {
+    id: "innovate-solutions-website",
     title: "Innovate Solutions Website",
     category: "Web Development",
     slug: "innovate-solutions-website",
@@ -46,6 +61,7 @@ export const portfolioItems = [
     challenge: "Innovate Solutions needed a complete website redesign that would showcase their consulting services, improve user engagement, and incorporate a content management system for easy updates. The site needed to be fast, mobile-responsive, and optimized for search engines.",
     solution: "We designed and developed a modern, responsive website with a clean aesthetic and intuitive navigation. The site features interactive elements, case studies, team profiles, and a custom CMS for content management. We implemented performance optimizations and SEO best practices throughout the site.",
     timeline: "3 months",
+    date: "2024-02-15",
     results: [
       {
         stat: "155%",
@@ -75,6 +91,7 @@ export const portfolioItems = [
     ]
   },
   {
+    id: "global-connect-brand-identity",
     title: "Global Connect Brand Identity",
     category: "Brand Design",
     slug: "global-connect-brand-identity",
@@ -84,6 +101,7 @@ export const portfolioItems = [
     challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",
     solution: "We developed a comprehensive brand identity system including a distinctive logo, a vibrant color palette, custom typography, and detailed brand guidelines. The new identity was designed to be flexible across all digital and physical touchpoints while conveying reliability, innovation, and global reach.",
     timeline: "2 months",
+    date: "2024-01-15",
     results: [
       {
         stat: "94%",

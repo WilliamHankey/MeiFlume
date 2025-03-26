@@ -1,8 +1,9 @@
-
 import { motion } from 'framer-motion';
 import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { ServiceSchema, WebSiteSchema } from '../components/StructuredData';
+import { OptimizedImage } from '@/components/OptimizedImage';
 
 interface ServiceProps {
   id: string;
@@ -94,108 +95,128 @@ const services: ServiceProps[] = [
 
 const Services = () => {
   return (
-    <div className="pt-28 bg-white">
-      {/* Hero Section */}
-      <section className="py-20 bg-brand-gray">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-            <p className="text-xl text-muted-foreground">
-              Comprehensive digital transformation solutions tailored to meet your business objectives and drive growth.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Individual Services */}
-      {services.map((service, index) => (
-        <section 
-          key={service.id} 
-          id={service.id}
-          className={`py-20 ${index % 2 === 1 ? 'bg-brand-gray' : ''}`}
-        >
-          <div className="container mx-auto px-4 md:px-6">
-            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}>
-              <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="w-full lg:w-1/2"
-              >
-                <div className={`${service.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                <p className="text-lg text-muted-foreground mb-6">
-                  {service.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <CheckCircle className="h-6 w-6 text-brand-teal shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
-                  <Link to={`/services/${service.id}`}>
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="w-full lg:w-1/2"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-brand-teal/20 rounded-2xl transform rotate-2" />
-                  <img 
-                    src={service.imageUrl} 
-                    alt={service.title} 
-                    className="rounded-2xl shadow-xl relative z-10"
-                  />
-                </div>
-              </motion.div>
-            </div>
+    <>
+      <ServiceSchema
+        data={{
+          name: "Digital Transformation Services",
+          description: "Comprehensive digital transformation solutions to help businesses thrive in the modern digital landscape.",
+          provider: {
+            '@type': 'Organization',
+            name: 'MeiFlume'
+          }
+        }}
+      />
+      <WebSiteSchema
+        data={{
+          name: "MeiFlume Services",
+          url: "https://meiflume.com/services",
+          description: "Explore our comprehensive range of digital transformation services including web development, software development, brand strategy, and more."
+        }}
+      />
+      <div className="pt-28 bg-white">
+        {/* Hero Section */}
+        <section className="py-20 bg-brand-gray">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-3xl mx-auto"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
+              <p className="text-xl text-muted-foreground">
+                Comprehensive digital transformation solutions tailored to meet your business objectives and drive growth.
+              </p>
+            </motion.div>
           </div>
         </section>
-      ))}
-      
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-teal text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+
+        {/* Individual Services */}
+        {services.map((service, index) => (
+          <section 
+            key={service.id} 
+            id={service.id}
+            className={`py-20 ${index % 2 === 1 ? 'bg-brand-gray' : ''}`}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
-            <p className="text-xl text-white/80 mb-8">
-              Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
-            </p>
-            <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
-              <Link to="/contact">
-                Get a Free Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+            <div className="container mx-auto px-4 md:px-6">
+              <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}>
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="w-full lg:w-1/2"
+                >
+                  <div className={`${service.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <CheckCircle className="h-6 w-6 text-brand-teal shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
+                    <Link to={`/services/${service.id}`}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="w-full lg:w-1/2"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-brand-teal/20 rounded-2xl transform rotate-2" />
+                    <OptimizedImage 
+                      src={service.imageUrl} 
+                      alt={service.title}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index < 2}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        ))}
+        
+        {/* CTA Section */}
+        <section className="py-20 bg-brand-teal text-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
+              <p className="text-xl text-white/80 mb-8">
+                Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
+              </p>
+              <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
+                <Link to="/contact">
+                  Get a Free Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 
