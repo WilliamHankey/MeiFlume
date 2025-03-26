@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const GA_MEASUREMENT_ID = 'G-NC20RJBWMJ';
+const GA_MEASUREMENT_ID = 'G-M9XLB073BZ';
 
 interface EventProps {
   action: string;
