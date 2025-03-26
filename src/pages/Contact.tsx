@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
@@ -51,7 +50,7 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      toast.success("Your message has been sent! We'll get back to you soon.");
+      toast.success("Your message has been sent! We will get back to you soon.");
       
       // Reset form after successful submission
       setFormData({
@@ -214,7 +213,7 @@ const Contact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
-                          placeholder="What's your full name?"
+                          placeholder="What is your full name?"
                         />
                       </div>
 
@@ -230,7 +229,7 @@ const Contact = () => {
                           value={formData.company}
                           onChange={handleChange}
                           className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
-                          placeholder="What's the name of your business/company?"
+                          placeholder="What is the name of your business/company?"
                         />
                       </div>
 
@@ -246,7 +245,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
-                          placeholder="What's your email address?"
+                          placeholder="What is your email address?"
                         />
                       </div>
 
@@ -262,7 +261,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="w-full rounded-md border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent transition-all"
-                          placeholder="What's your phone number?"
+                          placeholder="What is your phone number?"
                         />
                       </div>
 

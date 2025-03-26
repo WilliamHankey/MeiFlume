@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -16,7 +15,7 @@ const ContactCTA = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Us?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Let's discuss how we can help transform your digital presence and achieve your business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -26,9 +25,10 @@ const ContactCTA = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10" asChild>
               <Link to="/portfolio">
                 View Our Work
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

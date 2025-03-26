@@ -1,7 +1,7 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
@@ -138,7 +138,7 @@ const About = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-brand-blue text-white">
+      <section className="py-20 bg-brand-teal text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -148,12 +148,14 @@ const About = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Us?</h2>
-            <p className="text-xl text-neutral-950 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               Let's discuss how we can help transform your digital presence and achieve your business goals.
             </p>
-            <Button size="lg" className="bg-white text-brand-blue hover:bg-white/90">
-              Get in Touch
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
+              <Link to="/contact">
+                Get in Touch
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </motion.div>
         </div>

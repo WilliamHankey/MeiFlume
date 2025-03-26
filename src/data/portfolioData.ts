@@ -1,4 +1,3 @@
-
 export const portfolioItems = [
   {
     title: "U&I Printing Ordering System",
@@ -79,7 +78,7 @@ export const portfolioItems = [
     title: "Global Connect Brand Identity",
     category: "Brand Design",
     slug: "global-connect-brand-identity",
-    image: "https://images.unsplash.com/photo-1560830889-3abe577e4fe3?q=80&w=2340&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
     description: "A complete brand identity package including logo design, color palette, typography, and brand guidelines.",
     client: "Global Connect",
     challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",
@@ -108,7 +107,7 @@ export const portfolioItems = [
     ],
     technologies: ["Adobe Creative Suite", "Figma", "Brand Strategy", "Market Research"],
     gallery: [
-      "https://images.unsplash.com/photo-1560830889-3abe577e4fe3?q=80&w=2340&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=3270&auto=format&fit=crop", 
       "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop"
     ]
