@@ -22,16 +22,10 @@ const Footer = () => {
               We transform businesses through cutting-edge digital solutions and innovative strategies.
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="#" className="text-white hover:text-brand-teal transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-white hover:text-brand-teal transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
               <a href="#" className="text-white hover:text-brand-teal transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white hover:text-brand-teal transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/meiflume" className="text-white hover:text-brand-teal transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -88,13 +82,13 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-brand-teal shrink-0 mt-1" />
                 <span className="text-gray-200">
-                  123 Tech Avenue, Digital District, CA 94107
+                  1st Floor, Block B, North Park, Black River Park,, 2 Fir Street, Observatory, Cape Town, 7925
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-brand-teal shrink-0" />
                 <a href="tel:+1234567890" className="text-gray-200 hover:text-white transition-colors">
-                  (123) 456-7890
+                  (27) 72-030-2071
                 </a>
               </li>
               <li className="flex items-center gap-3">
