@@ -162,20 +162,12 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap gap-4">
-                    <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
-                      <Link to={`/services/${service.id}`}>
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button variant="outline" className="border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white" asChild>
-                      <Link to="/contact">
-                        Request a Proposal
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
+                  <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
+                    <Link to={`/services/${service.id}`}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
                 </motion.div>
                 
                 <motion.div
@@ -214,20 +206,12 @@ const Services = () => {
               <p className="text-xl text-white/80 mb-8">
                 Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
-                  <Link to="/contact">
-                    Get a Free Consultation
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-brand-teal" asChild>
-                  <Link to="/contact">
-                    Request a Proposal
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
+              <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
+                <Link to="/contact">
+                  Get a Free Consultation
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </section>

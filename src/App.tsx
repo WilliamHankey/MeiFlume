@@ -20,9 +20,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import { OrganizationSchema } from './components/StructuredData';
 import { Analytics } from '@/components/Analytics';
 import { HeatmapTracking } from '@/components/HeatmapTracking';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import CookiePolicy from './pages/CookiePolicy';
 
 // ScrollToTop component to handle scrolling to top on route change
 const ScrollToTop = () => {
@@ -73,9 +70,6 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:blogId" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
