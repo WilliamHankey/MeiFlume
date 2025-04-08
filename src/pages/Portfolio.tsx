@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type FC, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -14,10 +14,12 @@ const categories = [
   "Mobile Development",
   "Brand Design",
   "UI/UX Design"
-];
+] as const;
 
-const Portfolio = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+type Category = (typeof categories)[number];
+
+const Portfolio: FC = () => {
+  const [activeCategory, setActiveCategory] = useState<Category>("All");
   
   const filteredItems = activeCategory === "All" 
     ? portfolioItems 

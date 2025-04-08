@@ -1,13 +1,15 @@
+import { type FC } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 interface ContactCTAProps {
+  /** Whether to hide the View Our Work button */
   hideViewWork?: boolean;
 }
 
-const ContactCTA = ({ hideViewWork = false }: ContactCTAProps) => {
+const ContactCTA: FC<ContactCTAProps> = ({ hideViewWork = false }) => {
   return (
     <section className="py-20 bg-brand-teal text-white">
       <div className="container mx-auto px-4 md:px-6">
