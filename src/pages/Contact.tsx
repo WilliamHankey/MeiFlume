@@ -48,36 +48,33 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      const result = await sendContactEmail(formData);
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      if (result.success) {
-        setIsSubmitted(true);
-        toast.success("Your message has been sent! We will get back to you soon.");
-        
-        // Reset form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          budget: '',
-          source: '',
-          services: {
-            'Team Augmentation': false,
-            'Web App Development': false,
-            'Mobile App Development': false,
-            'UI/UX Audit': false,
-            'Design Your App': false,
-            'Other': false,
-          },
-          message: '',
-        });
-        
-        // Reset success state after delay
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        throw new Error('Failed to send message');
-      }
+      setIsSubmitted(true);
+      toast.success("Thank you for your message! We will get back to you soon.");
+      
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        budget: '',
+        source: '',
+        services: {
+          'Team Augmentation': false,
+          'Web App Development': false,
+          'Mobile App Development': false,
+          'UI/UX Audit': false,
+          'Design Your App': false,
+          'Other': false,
+        },
+        message: '',
+      });
+      
+      // Reset success state after delay
+      setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error("Sorry, there was an error sending your message. Please try again later.");
