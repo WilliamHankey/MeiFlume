@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
 import ServiceCard from '@/components/ServiceCard';
-import PortfolioItem from '@/components/PortfolioItem';
+import { PortfolioItem } from '@/components/PortfolioItem';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import BlogSection from '@/components/BlogSection';
 import ContactCTA from '@/components/ContactCTA';

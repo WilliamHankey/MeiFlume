@@ -4,6 +4,7 @@ export interface PortfolioItem {
   category: string;
   slug: string;
   image: string;
+  link?: string;
   description: string;
   client: string;
   challenge: string;
@@ -26,6 +27,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "Web Development",
     slug: "ui-printing",
     image: "/assets/U&IPrinting/Cover.png",
+    link: "https://www.uandiprinting.com/",
     description: "A modern, responsive website redesign for U&I Printing, focusing on user experience and conversion optimization.",
     client: "U&I Printing",
     challenge: "Create a modern, user-friendly website that showcases printing services effectively.",
@@ -52,10 +54,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "innovate-solutions-website",
-    title: "Innovate Solutions Website",
+    title: "New-U Welness & Beauty Website",
     category: "Web Development",
     slug: "innovate-solutions-website",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=3269&auto=format&fit=crop",
+    image: "assets/NewU/Cover.png",
+    link: "https://new-u-pi.vercel.app/",
     description: "A modern, responsive website for a consulting firm featuring a custom CMS, interactive elements, and optimized performance.",
     client: "Innovate Solutions",
     challenge: "Innovate Solutions needed a complete website redesign that would showcase their consulting services, improve user engagement, and incorporate a content management system for easy updates. The site needed to be fast, mobile-responsive, and optimized for search engines.",
@@ -92,10 +95,92 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "global-connect-brand-identity",
-    title: "Global Connect Brand Identity",
+    title: "Alenor's Catering Brand Indentity",
     category: "Brand Design",
     slug: "global-connect-brand-identity",
     image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
+    description: "A complete brand identity package including logo design, color palette, typography, and brand guidelines.",
+    client: "Global Connect",
+    challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",
+    solution: "We developed a comprehensive brand identity system including a distinctive logo, a vibrant color palette, custom typography, and detailed brand guidelines. The new identity was designed to be flexible across all digital and physical touchpoints while conveying reliability, innovation, and global reach.",
+    timeline: "2 months",
+    date: "2024-01-15",
+    results: [
+      {
+        stat: "94%",
+        description: "Brand recognition improvement"
+      },
+      {
+        stat: "67%",
+        description: "Increase in customer engagement"
+      },
+      {
+        stat: "45%",
+        description: "Growth in market share"
+      }
+    ],
+    services: [
+      "Brand Strategy",
+      "Logo Design",
+      "Visual Identity",
+      "Brand Guidelines",
+      "Marketing Collateral"
+    ],
+    technologies: ["Adobe Creative Suite", "Figma", "Brand Strategy", "Market Research"],
+    gallery: [
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=3270&auto=format&fit=crop", 
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: "alenor-catering-website-development",
+    title: "Alenor's Catering Website",
+    category: "Website Development",
+    slug: "alenor-catering-website-development",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
+    link: "https://alenorscatering.co.za/",
+    description: "A complete brand identity package including logo design, color palette, typography, and brand guidelines.",
+    client: "Global Connect",
+    challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",
+    solution: "We developed a comprehensive brand identity system including a distinctive logo, a vibrant color palette, custom typography, and detailed brand guidelines. The new identity was designed to be flexible across all digital and physical touchpoints while conveying reliability, innovation, and global reach.",
+    timeline: "2 months",
+    date: "2024-01-15",
+    results: [
+      {
+        stat: "94%",
+        description: "Brand recognition improvement"
+      },
+      {
+        stat: "67%",
+        description: "Increase in customer engagement"
+      },
+      {
+        stat: "45%",
+        description: "Growth in market share"
+      }
+    ],
+    services: [
+      "Brand Strategy",
+      "Logo Design",
+      "Visual Identity",
+      "Brand Guidelines",
+      "Marketing Collateral"
+    ],
+    technologies: ["Adobe Creative Suite", "Figma", "Brand Strategy", "Market Research"],
+    gallery: [
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=3270&auto=format&fit=crop", 
+      "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=3271&auto=format&fit=crop"
+    ]
+  },
+  {
+    id: "meer-consulting-website-development",
+    title: "Meer Consulting Website",
+    category: "Website Development",
+    slug: "meer-consulting-website-development",
+    image: "assets/MeerConsulting/Cover.png",
+    link: "https://meerconsulting.co.za/",
     description: "A complete brand identity package including logo design, color palette, typography, and brand guidelines.",
     client: "Global Connect",
     challenge: "Global Connect, a telecommunications company, needed a complete brand overhaul to reposition themselves in the market. They needed a modern, cohesive brand identity that would resonate with their target audience and differentiate them from competitors.",

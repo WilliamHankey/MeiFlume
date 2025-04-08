@@ -1,6 +1,5 @@
-
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Linkedin, Mail, Phone, MapPin, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,11 +21,14 @@ const Footer = () => {
               We transform businesses through cutting-edge digital solutions and innovative strategies.
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="#" className="text-white hover:text-brand-teal transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/meiflumedev/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-teal transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://www.linkedin.com/company/meiflume" className="text-white hover:text-brand-teal transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/meiflume" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-teal transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
+              </a>
+              <a href="https://www.youtube.com/@MeiFlume" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-teal transition-colors" aria-label="YouTube">
+                <Youtube size={20} />
               </a>
             </div>
           </div>
@@ -81,14 +83,19 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-brand-teal shrink-0 mt-1" />
-                <span className="text-gray-200">
-                  1st Floor, Block B, North Park, Black River Park,, 2 Fir Street, Observatory, Cape Town, 7925
-                </span>
+                <a 
+                  href="https://maps.google.com/?q=1st+Floor,+Block+B,+North+Park,+Black+River+Park,+2+Fir+Street,+Observatory,+Cape+Town,+7925"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-200 hover:text-white transition-colors"
+                >
+                  1st Floor, Block B, North Park, Black River Park, 2 Fir Street, Observatory, Cape Town, 7925
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-brand-teal shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-200 hover:text-white transition-colors">
-                  (27) 72-030-2071
+                <a href="tel:+27720302071" className="text-gray-200 hover:text-white transition-colors">
+                  +27 (72) 030-2071
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -107,9 +114,9 @@ const Footer = () => {
               © {currentYear} MeiFlume. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link>
             </div>
           </div>
         </div>

@@ -122,7 +122,7 @@ const Portfolio = () => {
         </section>
         
         {/* CTA Section */}
-        <ContactCTA />
+        <ContactCTA hideViewWork={true} />
       </div>
     </>
   );

@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
-const ContactCTA = () => {
+interface ContactCTAProps {
+  hideViewWork?: boolean;
+}
+
+const ContactCTA = ({ hideViewWork = false }: ContactCTAProps) => {
   return (
     <section className="py-20 bg-brand-teal text-white">
       <div className="container mx-auto px-4 md:px-6">
@@ -25,12 +29,14 @@ const ContactCTA = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10" asChild>
-              <Link to="/portfolio">
-                View Our Work
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            {!hideViewWork && (
+              <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10" asChild>
+                <Link to="/portfolio">
+                  View Our Work
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
           </div>
         </motion.div>
       </div>
