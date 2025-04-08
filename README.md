@@ -61,8 +61,8 @@ MeiFlume is a modern web application built with React, TypeScript, and Tailwind 
 
 4. Start the development server:
    ```bash
-   npm run dev
-   ```
+npm run dev
+```
 
 ## 🏗️ Project Structure
 
