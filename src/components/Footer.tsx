@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -107,9 +106,9 @@ const Footer = () => {
               © {currentYear} MeiFlume. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/cookie-policy" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</Link>
             </div>
           </div>
         </div>
