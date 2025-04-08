@@ -1,69 +1,106 @@
-# Welcome to your Lovable project
+# MeiFlume - Digital Solutions & Innovation
 
-## Project info
+![MeiFlume Logo](public/lovable-uploads/MeiFlumeLogo.png)
 
-**URL**: https://lovable.dev/projects/77cc8aab-8452-4055-ad35-bca64f099a33
+MeiFlume is a modern web application built with React, TypeScript, and Tailwind CSS, offering digital solutions and innovative strategies for businesses. The platform showcases our services, portfolio, and blog while providing a seamless user experience.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Modern Tech Stack**
+  - React 18 with TypeScript
+  - Tailwind CSS for styling
+  - Framer Motion for animations
+  - React Query for data fetching
+  - React Router for navigation
+  - Vercel Analytics for tracking
 
-**Use Lovable**
+- **Key Sections**
+  - Homepage with service highlights
+  - About Us page
+  - Services showcase
+  - Portfolio gallery
+  - Blog section
+  - Contact form
+  - Policy pages (Privacy, Terms, Cookies)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/77cc8aab-8452-4055-ad35-bca64f099a33) and start prompting.
+- **User Experience**
+  - Responsive design
+  - Smooth animations
+  - SEO optimized
+  - Performance optimized
+  - Accessibility compliant
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+- **Frontend Framework**: React 18
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **State Management**: React Query
+- **Routing**: React Router
+- **Analytics**: Vercel Analytics
+- **Deployment**: Vercel
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📦 Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/meiflume.git
+   cd meiflume
+   ```
 
-Follow these steps:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. Create a `.env` file in the root directory and add necessary environment variables:
+   ```env
+   VITE_API_URL=your_api_url
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🏗️ Project Structure
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── lib/           # Utility functions and configurations
+├── data/          # Static data and content
+├── hooks/         # Custom React hooks
+├── types/         # TypeScript type definitions
+└── App.tsx        # Main application component
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The application is deployed on Vercel. Any push to the main branch will trigger an automatic deployment.
 
-**Use GitHub Codespaces**
+## 📝 Contributing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## What technologies are used for this project?
+## 📄 License
 
-This project is built with .
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 👥 Team
 
-## How can I deploy this project?
+- Development Team at MeiFlume
+- Design Team at MeiFlume
 
-Simply open [Lovable](https://lovable.dev/projects/77cc8aab-8452-4055-ad35-bca64f099a33) and click on Share -> Publish.
+## 📞 Contact
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- Website: [meiflume.com](https://meiflume.com)
+- Email: info@meiflume.com
+- Phone: +27 (72) 030-2071
+- Address: 1st Floor, Block B, North Park, Black River Park, 2 Fir Street, Observatory, Cape Town, 7925
