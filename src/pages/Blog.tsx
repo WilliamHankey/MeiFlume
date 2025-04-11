@@ -60,34 +60,25 @@ export default function Blog() {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background pt-28 ">
         {/* Hero Section */}
-        <section className="relative h-[60vh] flex items-center justify-center">
-          <OptimizedImage
-            src="/images/blog-hero.jpg"
-            alt="Blog Hero"
-            className="absolute inset-0 w-full h-full object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="relative z-10 text-center text-white px-4">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-6xl font-bold mb-4"
-            >
-              Our Blog
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl md:text-2xl max-w-2xl mx-auto"
-            >
-              Stay updated with the latest insights, trends, and news from MeiFlume.
-            </motion.p>
-          </div>
+        <section className="bg-[#2A2C3B] py-24 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-6xl font-bold mb-4 text-white"
+          >
+            Our Blog
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-xl text-gray-300 max-w-2xl mx-auto px-4"
+          >
+            Explore the latest insights, tips, and industry trends from our team of experts.
+          </motion.p>
         </section>
 
         {/* Blog Posts Section */}

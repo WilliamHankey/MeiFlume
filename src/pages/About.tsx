@@ -20,13 +20,6 @@ const About = () => {
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <Breadcrumb 
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'About', href: '/about' }
-        ]} 
-      />
-
       <div className="pt-28 bg-white">
         {/* Hero Section */}
         <section className="py-20 bg-brand-gray">
