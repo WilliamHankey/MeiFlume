@@ -2,11 +2,19 @@ import { motion } from 'framer-motion';
 import { CalendarDays } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { BlogPost } from '@/data/blogData';
 import { OptimizedImage } from '@/components/OptimizedImage';
 
 interface BlogCardProps {
-  blog: BlogPost;
+  blog: {
+    id: string;
+    title: string;
+    excerpt: string;
+    image: string;
+    date: string;
+    author: string;
+    category: string;
+    slug: string;
+  };
   index: number;
 }
 
@@ -39,7 +47,7 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
         <p className="text-muted-foreground mb-4 flex-1">{blog.excerpt}</p>
         
         <Link 
-          to={`/blog/${blog.id}`} 
+          to={`/blog/${blog.slug}`} 
           className="text-brand-teal font-medium hover:underline mt-auto inline-flex items-center"
         >
           Read more

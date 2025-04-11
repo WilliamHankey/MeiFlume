@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import ContactCTA from '@/components/ContactCTA';
-import { portfolioItems } from '@/data/portfolioData';
 import { PortfolioItemSchema, WebSiteSchema } from '../components/StructuredData';
 import { OptimizedImage } from '@/components/OptimizedImage';
+import { getProjects, SanityProject } from '@/api/projects';
+import { urlFor } from '@/lib/sanity';
 
 const categories = [
   "All",
@@ -18,10 +19,35 @@ const categories = [
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [projects, setProjects] = useState<SanityProject[]>([]);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchProjects();
+  }, []);
   
   const filteredItems = activeCategory === "All" 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
+    ? projects 
+    : projects.filter(item => item.category === activeCategory);
+
+  if (loading) {
+    return (
+      <div className="pt-28 min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-teal"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -32,13 +58,13 @@ const Portfolio = () => {
           description: "Explore our portfolio of successful digital transformation projects, including web development, brand identity, and software solutions."
         }}
       />
-      {portfolioItems.map((item) => (
+      {projects.map((item) => (
         <PortfolioItemSchema
-          key={item.id}
+          key={item._id}
           data={{
             name: item.title,
             description: item.description,
-            image: item.image,
+            image: urlFor(item.image).url(),
             client: item.client,
             datePublished: item.date
           }}
@@ -84,7 +110,7 @@ const Portfolio = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredItems.map((item, index) => (
                 <motion.div
-                  key={item.title}
+                  key={item._id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -92,7 +118,7 @@ const Portfolio = () => {
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <OptimizedImage 
-                      src={item.image} 
+                      src={urlFor(item.image).url()} 
                       alt={item.title}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
@@ -107,7 +133,7 @@ const Portfolio = () => {
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium">Client: {item.client}</span>
                       <Link 
-                        to={`/portfolio/${item.slug}`} 
+                        to={`/portfolio/${item.slug.current}`} 
                         className="text-brand-teal flex items-center gap-1 text-sm font-medium hover:underline"
                       >
                         View Details
