@@ -4,32 +4,21 @@ import { motion } from 'framer-motion';
 import { CalendarDays, User, Tag, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { getPostBySlug, getPosts, BlogPost } from '@/lib/sanity';
 import { OptimizedImage } from '@/components/OptimizedImage';
-import { BlogPostSchema } from '@/components/StructuredData';
-import RelatedBlogs from '@/components/RelatedBlogs';
+import { getPostBySlug } from '@/lib/sanity';
+import type { BlogPost } from '@/lib/sanity';
 
-const BlogDetail = () => {
+const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchPost() {
       if (!slug) return;
       try {
-        const [postData, allPosts] = await Promise.all([
-          getPostBySlug(slug),
-          getPosts()
-        ]);
+        const postData = await getPostBySlug(slug);
         setPost(postData);
-        
-        // Get related posts from the same category
-        const related = allPosts
-          .filter(p => p.category === postData.category && p.slug !== slug)
-          .slice(0, 3);
-        setRelatedPosts(related);
       } catch (error) {
         console.error('Error fetching post:', error);
       } finally {
@@ -37,7 +26,7 @@ const BlogDetail = () => {
       }
     }
 
-    fetchData();
+    fetchPost();
   }, [slug]);
 
   if (!loading && !post) {
@@ -46,22 +35,7 @@ const BlogDetail = () => {
 
   return (
     <div className="pt-28 pb-20">
-      {post && (
-        <BlogPostSchema
-          data={{
-            headline: post.title,
-            description: post.excerpt,
-            image: post.image,
-            datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              '@type': 'Person',
-              name: post.author
-            }
-          }}
-        />
-      )}
-
+      {/* Blog Header */}
       <div className="container mx-auto px-4 md:px-6">
         <Link 
           to="/blog"
@@ -71,15 +45,9 @@ const BlogDetail = () => {
         </Link>
 
         {loading ? (
-          <div className="animate-pulse max-w-4xl mx-auto">
+          <div className="animate-pulse">
             <div className="h-12 bg-gray-200 rounded w-3/4 mb-4"></div>
             <div className="h-4 bg-gray-200 rounded w-1/4 mb-8"></div>
-            <div className="aspect-[16/9] bg-gray-200 rounded mb-8"></div>
-            <div className="space-y-4">
-              <div className="h-4 bg-gray-200 rounded w-full"></div>
-              <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-              <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-            </div>
           </div>
         ) : post && (
           <motion.div
@@ -113,7 +81,7 @@ const BlogDetail = () => {
               <OptimizedImage 
                 src={post.image} 
                 alt={post.title}
-                className="w-full h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[400px] md:h-[500px]"
                 priority
               />
             </div>
@@ -125,14 +93,8 @@ const BlogDetail = () => {
           </motion.div>
         )}
       </div>
-
-      {/* Related Blogs */}
-      {relatedPosts.length > 0 && (
-        <RelatedBlogs blogs={relatedPosts} />
-      )}
     </div>
   );
 };
 
-export default BlogDetail;
-
+export default BlogPost; 

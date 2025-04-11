@@ -23,6 +23,7 @@ export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
+  content: string;
   image: string;
   date: string;
   author: string;
@@ -37,7 +38,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
       "id": _id,
       title,
       excerpt,
-      "image": mainImage.asset->url,
+      mainImage,
       "date": publishedAt,
       author,
       "category": categories[0],
@@ -45,9 +46,42 @@ export const getPosts = async (): Promise<BlogPost[]> => {
     }`;
 
     const posts = await client.fetch(query);
-    return posts;
+    return posts.map((post: any) => ({
+      ...post,
+      content: '', // Content is not needed in the list view
+      image: post.mainImage ? urlFor(post.mainImage).width(800).quality(80).url() : null
+    }));
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
+  }
+};
+
+// Function to fetch a single blog post by slug
+export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
+  try {
+    const query = `*[_type == "post" && slug.current == $slug][0] {
+      "id": _id,
+      title,
+      excerpt,
+      content,
+      mainImage,
+      "date": publishedAt,
+      author,
+      "category": categories[0],
+      "slug": slug.current
+    }`;
+
+    const post = await client.fetch(query, { slug });
+    if (!post) return null;
+
+    return {
+      ...post,
+      image: post.mainImage ? urlFor(post.mainImage).width(1200).quality(90).url() : null,
+      content: post.content || post.excerpt // Fallback to excerpt if no content
+    };
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
   }
 }; 

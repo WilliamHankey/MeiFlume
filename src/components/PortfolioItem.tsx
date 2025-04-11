@@ -6,11 +6,12 @@ import { OptimizedImage } from '@/components/OptimizedImage';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
+import { urlFor } from '@/lib/sanity';
 
 interface PortfolioItemProps {
   title: string;
   category: string;
-  image: string;
+  image: any;
   slug: string;
   index: number;
   link?: string;
@@ -46,7 +47,7 @@ export const PortfolioItem = ({
       >
         <div className="relative aspect-[16/9] overflow-hidden">
           <OptimizedImage
-            src={image} 
+            src={urlFor(image).url()} 
             alt={title}
             className="transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -68,84 +69,24 @@ export const PortfolioItem = ({
     );
   }
 
-  // If we're in the portfolio detail view
+  // If we're in the project detail view
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Hero Section */}
-      <div className="relative h-[60vh] w-full overflow-hidden">
-        <OptimizedImage
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8">{description}</p>
-            {link && (
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-brand-teal text-white rounded-full hover:bg-brand-teal/90 transition-colors gap-2"
-              >
-                Visit Website
-                <ArrowUpRight className="w-5 h-5" />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Back to Portfolio and Visit Links */}
-      <div className="container mx-auto px-4 py-8 flex justify-between items-center">
-        <Link
-          to="/portfolio"
-          className="inline-flex items-center text-brand-teal hover:text-brand-teal/80 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Portfolio
-        </Link>
-        {link && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-brand-teal hover:text-brand-teal/80 transition-colors"
-          >
-            Visit Website
-            <ArrowUpRight className="w-4 h-4 ml-2" />
-          </a>
-        )}
-      </div>
-
-      {/* Project Details */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left Column - Gallery */}
-          {gallery && gallery.length > 0 && (
-            <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Project Gallery</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {gallery.map((image, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.05 }}
-                    className="relative aspect-square cursor-pointer overflow-hidden rounded-lg"
-                    onClick={() => setSelectedImage(image)}
-                  >
-                    <OptimizedImage
-                      src={image}
-                      alt={`${title} gallery image ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+    <div className="space-y-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h1 className="text-4xl font-bold mb-4">{title}</h1>
+          {description && (
+            <p className="text-lg text-muted-foreground mb-6">{description}</p>
           )}
-
-          {/* Right Column - Details */}
+          
+          {link && (
+            <Button className="mb-6" asChild>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                Visit Website <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          )}
+          
           <div className="space-y-8">
             {technologies && technologies.length > 0 && (
               <div>
@@ -177,6 +118,36 @@ export const PortfolioItem = ({
               </div>
             )}
           </div>
+        </div>
+        
+        <div className="space-y-6">
+          <div className="aspect-[16/9] overflow-hidden rounded-2xl">
+            <OptimizedImage
+              src={urlFor(image).url()}
+              alt={title}
+              className="w-full h-full object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          
+          {gallery && gallery.length > 0 && (
+            <div className="grid grid-cols-2 gap-4">
+              {gallery.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(img)}
+                  className="aspect-[16/9] overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+                >
+                  <OptimizedImage
+                    src={img}
+                    alt={`${title} gallery image ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

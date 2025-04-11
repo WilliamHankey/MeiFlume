@@ -12,7 +12,7 @@ import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import ProjectDetail from "./components/ProjectDetail";
 import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -41,28 +41,24 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <HeatmapTracking />
         <BrowserRouter>
-          <Analytics />
           <ScrollToTop />
+          <OrganizationSchema data={{
+            name: "MeiFlume",
+            url: "https://meiflume.com",
+            logo: "https://meiflume.com/logo.png",
+            description: "MeiFlume - Professional Web Development and Design Services",
+            address: {
+              streetAddress: "",
+              addressLocality: "Lisbon",
+              addressRegion: "Lisbon",
+              postalCode: "",
+              addressCountry: "PT"
+            }
+          }} />
+          <Analytics />
+          <HeatmapTracking />
           <Navbar />
-          <OrganizationSchema
-            data={{
-              name: "MeiFlume",
-              url: "https://meiflume.com",
-              logo: "/lovable-uploads/MeiFlumeFavicon.png",
-              description: "We help businesses transform and thrive in the digital age with innovative solutions tailored to meet your unique needs and challenges.",
-              address: {
-                streetAddress: "123 Business Street",
-                addressLocality: "San Francisco",
-                addressRegion: "CA",
-                postalCode: "94105",
-                addressCountry: "US"
-              }
-            }}
-          />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
@@ -71,7 +67,7 @@ const App = () => (
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/portfolio/:slug" element={<ProjectDetail />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:blogId" element={<BlogDetail />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -79,6 +75,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          <Toaster />
+          <Sonner />
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>

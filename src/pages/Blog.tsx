@@ -7,6 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { OptimizedImage } from '@/components/OptimizedImage';
 import { cn } from '@/lib/utils';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -149,8 +150,10 @@ export default function Blog() {
                         <p className="text-muted-foreground">{post.excerpt}</p>
                       </CardContent>
                       <CardFooter>
-                        <Button variant="outline" className="w-full">
-                          Read More
+                        <Button variant="outline" className="w-full" asChild>
+                          <Link to={`/blog/${post.slug}`}>
+                            Read More
+                          </Link>
                         </Button>
                       </CardFooter>
                     </Card>

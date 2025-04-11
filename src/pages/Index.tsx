@@ -9,8 +9,10 @@ import TestimonialSlider from '@/components/TestimonialSlider';
 import BlogSection from '@/components/BlogSection';
 import ContactCTA from '@/components/ContactCTA';
 import { Button } from '@/components/ui/button';
-import { portfolioItems } from '@/data/portfolioData';
-import { getLatestBlogs } from '@/data/blogData';
+import { getPosts } from '@/lib/sanity';
+import { getProjects, type SanityProject } from '@/api/projects';
+import { type BlogPost } from '@/data/blogData';
+import { useState, useEffect } from 'react';
 
 const serviceItems = [
   {
@@ -69,11 +71,42 @@ const features = [
 ];
 
 const Index = () => {
-  // Use only the first 3 portfolio items for the homepage
-  const featuredProjects = portfolioItems.slice(0, 3);
-  
-  // Get latest blog posts
-  const latestBlogs = getLatestBlogs(3);
+  const [featuredProjects, setFeaturedProjects] = useState<SanityProject[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [latestBlogs, setLatestBlogs] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fetch first 3 projects
+        const projectsData = await getProjects();
+        setFeaturedProjects(projectsData.slice(0, 3));
+        
+        // Fetch latest blog posts and transform to match BlogPost type
+        const blogsData = await getPosts();
+        const transformedBlogs = blogsData.slice(0, 3).map(post => ({
+          id: post.id,
+          title: post.title,
+          excerpt: post.excerpt,
+          content: `<p>${post.excerpt}</p>`, // Use excerpt as content for preview
+          image: post.image || '/images/placeholder-blog.jpg', // Fallback image
+          date: new Date(post.date).toISOString().split('T')[0], // Format as YYYY-MM-DD
+          author: post.author || 'MeiFlume Team', // Default author
+          category: post.category || 'General', // Default category
+          slug: post.slug,
+          tags: post.category ? [post.category] : ['General'], // Use category as tag
+          relatedService: undefined
+        })) satisfies BlogPost[];
+        setLatestBlogs(transformedBlogs);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <div className="bg-white">
@@ -202,18 +235,31 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((item, index) => (
-              <PortfolioItem
-                key={item.title}
-                title={item.title}
-                category={item.category}
-                image={item.image}
-                slug={item.slug}
-                index={index}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="aspect-[16/9] bg-gray-200 rounded-2xl mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
+                  <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredProjects.map((project, index) => (
+                <PortfolioItem
+                  key={project._id}
+                  title={project.title}
+                  category={project.category}
+                  image={project.image ? project.image : ''}
+                  slug={project.slug.current}
+                  index={index}
+                />
+              ))}
+            </div>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

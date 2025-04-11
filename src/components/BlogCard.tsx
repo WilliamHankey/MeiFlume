@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { OptimizedImage } from '@/components/OptimizedImage';
@@ -46,14 +46,12 @@ const BlogCard = ({ blog, index }: BlogCardProps) => {
         
         <p className="text-muted-foreground mb-4 flex-1">{blog.excerpt}</p>
         
-        <Link 
-          to={`/blog/${blog.slug}`} 
-          className="text-brand-teal font-medium hover:underline mt-auto inline-flex items-center"
+        <Link
+          to={`/blog/${blog.slug}`}
+          className="mt-4 inline-flex items-center gap-2 text-primary hover:text-primary/80"
         >
           Read more
-          <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
+          <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </motion.div>
