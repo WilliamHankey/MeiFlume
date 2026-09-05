@@ -2,9 +2,11 @@ import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 // Initialize the Sanity client
+// Falls back to the public project defaults so the app works even when the
+// VITE_ vars are absent (misconfigured deploys, stale dev servers, etc.).
 export const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-  dataset: import.meta.env.VITE_SANITY_DATASET,
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'ykv73jdw',
+  dataset: import.meta.env.VITE_SANITY_DATASET || 'meiflume',
   apiVersion: '2023-05-03',
   useCdn: true,
   token: import.meta.env.VITE_SANITY_TOKEN,
