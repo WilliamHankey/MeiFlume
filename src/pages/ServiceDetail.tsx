@@ -8,20 +8,8 @@ import RelatedBlogs from '@/components/RelatedBlogs';
 import { getRelatedBlogs } from '@/data/blogData';
 import { getServiceBySlug, type SanityService } from '@/api/services';
 import { getServiceIcon } from '@/lib/icons';
-import { urlFor } from '@/lib/sanity';
+import { imageSrc } from '@/lib/sanity';
 import { fallbackServices } from '@/data/services';
-
-// Resolve a Sanity image (asset object) or a plain URL string back to a usable URL
-type SanityImageLike = string | { asset?: { _ref?: string } } | null | undefined;
-
-const resolveImage = (image: SanityImageLike, width = 1600, quality = 80): string => {
-  if (!image) return '';
-  if (typeof image === 'string') return image;
-  if (image.asset && image.asset._ref) {
-    return urlFor(image).width(width).quality(quality).url();
-  }
-  return '';
-};
 
 const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -65,8 +53,8 @@ const ServiceDetail = () => {
   if (!service) return null;
 
   const serviceTitle = service.title;
-  const bannerSrc = resolveImage(service.bannerImage, 1600, 80);
-  const iconSrc = resolveImage(service.iconImage, 200, 80);
+  const bannerSrc = imageSrc(service.bannerImage, 1600, 80);
+  const iconSrc = imageSrc(service.iconImage, 200, 80);
   const Icon = getServiceIcon(service.icon);
   const bgColor = service.bgColor || 'bg-blue-500';
   const longDescription =

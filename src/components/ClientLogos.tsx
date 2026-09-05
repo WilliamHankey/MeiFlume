@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getClientLogos, type SanityClientLogo } from "@/api/clientLogos";
-import { urlFor } from "@/lib/sanity";
+import { imageSrc } from "@/lib/sanity";
 
 const fallbackLogos = [
   { name: "FiveLens", src: "https://fivelens.co.za/wp-content/uploads/2021/08/Asset-2FL-logo-300x109.png" },
@@ -42,7 +42,7 @@ const ClientLogos = () => {
     logos.length > 0
       ? logos.map((logo) => ({
           name: logo.name,
-          src: logo.image ? urlFor(logo.image).width(160).auto('format').url() : '',
+          src: logo.image ? imageSrc(logo.image, 160, 80) : '',
           link: logo.link,
         }))
       : fallbackLogos;

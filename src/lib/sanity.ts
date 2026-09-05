@@ -20,6 +20,26 @@ const builder = imageUrlBuilder(client);
 // Helper function to generate image URLs
 export const urlFor = (source: any) => builder.image(source);
 
+// Resolve an image that may be a Sanity asset object OR a plain URL string
+// (e.g. fallback content). URL strings are returned as-is; asset objects are
+// transformed via the URL builder. Returns '' when the source is empty.
+export const imageSrc = (
+  source: string | { asset?: { _ref?: string } } | null | undefined,
+  width = 1600,
+  quality = 80,
+): string => {
+  if (!source) return '';
+  if (typeof source === 'string') return source;
+  if (source.asset && source.asset._ref) {
+    try {
+      return urlFor(source).width(width).quality(quality).url();
+    } catch {
+      return String(source.asset._ref);
+    }
+  }
+  return '';
+};
+
 // Interface for blog post data
 export interface BlogPost {
   id: string;

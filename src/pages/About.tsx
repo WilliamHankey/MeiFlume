@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { TextContent } from '@/components/TextContent';
 import { getAbout, type SanityAbout } from '@/api/about';
-import { urlFor } from '@/lib/sanity';
+import { imageSrc } from '@/lib/sanity';
 
 const DEFAULT_ABOUT: Partial<SanityAbout> = {
   heroTitle: 'About MeiFlume',
@@ -72,7 +72,7 @@ const About = () => {
   const heroTitle = content.heroTitle || DEFAULT_ABOUT.heroTitle;
   const heroDescription = content.heroDescription || DEFAULT_ABOUT.heroDescription;
   const heroImage = content.heroImage
-    ? urlFor(content.heroImage).width(1200).quality(85).url()
+    ? imageSrc(content.heroImage, 1200, 85) || DEFAULT_ABOUT.heroImage
     : DEFAULT_ABOUT.heroImage;
   const coreValues =
     content.coreValues && content.coreValues.length > 0

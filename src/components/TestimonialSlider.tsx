@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Quote } from 'lucide-react';
 import { getTestimonials, type SanityTestimonial } from '@/api/testimonials';
-import { urlFor } from '@/lib/sanity';
+import { imageSrc } from '@/lib/sanity';
 import { SocialIcon } from '@/components/SocialIcon';
 
 const fallbackTestimonials: SanityTestimonial[] = [
@@ -118,7 +118,7 @@ const TestimonialSlider = () => {
                 <div className="flex items-center gap-4">
                   {testimonial.image ? (
                     <img
-                      src={urlFor(testimonial.image).width(120).height(120).crop('crop').fit('crop').auto('format').url()}
+                      src={imageSrc(testimonial.image, 120, 60)}
                       alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover border-2 border-brand-teal"
                     />
