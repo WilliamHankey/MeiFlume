@@ -55,6 +55,33 @@ const ProjectDetail = () => {
     return <Navigate to="/portfolio" replace />;
   }
 
+  if (project.comingSoon) {
+    return (
+      <div className="pt-28 pb-20">
+        <section className="py-24 bg-brand-dark text-white">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <span className="inline-flex items-center px-6 py-2.5 bg-white text-brand-dark font-bold text-lg tracking-widest uppercase rounded-full shadow-lg mb-8">
+              Coming Soon
+            </span>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6">{project.title}</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+              We're working hard on this project. Please check back soon for the full case study and
+              details.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-brand-teal hover:bg-brand-teal/90 text-white" asChild>
+                <Link to="/portfolio">Back to Portfolio</Link>
+              </Button>
+              <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
+                <Link to="/contact">Start a Similar Project</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   const { title, category, image, description, client, challenge, solution, results, gallery, technologies, timeline, services, link } = project;
 
   return (

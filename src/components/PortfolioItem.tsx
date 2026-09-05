@@ -19,6 +19,7 @@ interface PortfolioItemProps {
   gallery?: string[];
   technologies?: string[];
   features?: string[];
+  comingSoon?: boolean;
 }
 
 export const PortfolioItem = ({ 
@@ -31,7 +32,8 @@ export const PortfolioItem = ({
   description,
   gallery,
   technologies,
-  features 
+  features,
+  comingSoon
 }: PortfolioItemProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -53,6 +55,15 @@ export const PortfolioItem = ({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           
+          {comingSoon && (
+            <div className="absolute inset-0 bg-brand-dark/70 backdrop-blur-[2px] flex items-center justify-center">
+              <span className="inline-flex items-center px-6 py-2.5 bg-white text-brand-dark font-bold text-lg md:text-xl tracking-widest uppercase rounded-full shadow-lg">
+                Coming Soon
+              </span>
+            </div>
+          )}
+
+          {!comingSoon && (
           <div className="absolute inset-0 bg-gradient-to-t from-brand-teal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
             <p className="text-white text-sm font-medium mb-2">{category}</p>
             <h3 className="text-white text-xl font-bold mb-3">{title}</h3>
@@ -64,6 +75,7 @@ export const PortfolioItem = ({
               View project <ExternalLink className="ml-2 h-4 w-4" />
             </Link>
           </div>
+          )}
         </div>
       </motion.div>
     );

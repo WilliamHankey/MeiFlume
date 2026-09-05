@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Hero from '@/components/Hero';
 import ClientLogos from '@/components/ClientLogos';
@@ -11,46 +11,10 @@ import ContactCTA from '@/components/ContactCTA';
 import { Button } from '@/components/ui/button';
 import { getPosts } from '@/lib/sanity';
 import { getProjects, type SanityProject } from '@/api/projects';
+import { getServices, type SanityService } from '@/api/services';
+import { getServiceIcon } from '@/lib/icons';
 import { type BlogPost } from '@/data/blogData';
 import { useState, useEffect } from 'react';
-
-const serviceItems = [
-  {
-    icon: Code,
-    title: "Software Development",
-    description: "Custom software solutions, from mobile apps to enterprise platforms, tailored to your business needs.",
-    link: "/services#software",
-    color: "bg-brand-teal"
-  },
-  {
-    icon: Globe,
-    title: "Web Development",
-    description: "Responsive, fast-loading websites and web applications built with cutting-edge technologies.",
-    link: "/services#web",
-    color: "bg-brand-dark"
-  },
-  {
-    icon: PenTool,
-    title: "Graphic Design",
-    description: "Brand identity, UI/UX design, and visual assets that communicate your brand's unique value.",
-    link: "/services#design",
-    color: "bg-brand-teal"
-  },
-  {
-    icon: BrainCircuit,
-    title: "Brand Strategy",
-    description: "Strategic positioning and messaging that helps your brand stand out in a crowded marketplace.",
-    link: "/services#brand",
-    color: "bg-brand-dark"
-  },
-  {
-    icon: MessageSquare,
-    title: "Social Media Services",
-    description: "Content creation, community management, and growth strategies for major social platforms.",
-    link: "/services#social",
-    color: "bg-brand-teal"
-  }
-];
 
 const features = [
   {
@@ -72,6 +36,7 @@ const features = [
 
 const Index = () => {
   const [featuredProjects, setFeaturedProjects] = useState<SanityProject[]>([]);
+  const [services, setServices] = useState<SanityService[]>([]);
   const [loading, setLoading] = useState(true);
   const [latestBlogs, setLatestBlogs] = useState<BlogPost[]>([]);
 
@@ -81,6 +46,11 @@ const Index = () => {
         // Fetch first 3 projects
         const projectsData = await getProjects();
         setFeaturedProjects(projectsData.slice(0, 3));
+
+        // Fetch services from Sanity (featured first, then fall back to the first 5)
+        const servicesData = await getServices();
+        const featuredServices = servicesData.filter((s) => s.featured);
+        setServices(featuredServices.length > 0 ? featuredServices : servicesData.slice(0, 5));
         
         // Fetch latest blog posts and transform to match BlogPost type
         const blogsData = await getPosts();
@@ -170,17 +140,20 @@ const Index = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {serviceItems.map((service, index) => (
-              <ServiceCard
-                key={service.title}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                link={service.link}
-                color={service.color}
-                index={index}
-              />
-            ))}
+            {services.map((service, index) => {
+              const Icon = getServiceIcon(service.icon);
+              return (
+                <ServiceCard
+                  key={service._id}
+                  icon={Icon}
+                  title={service.title}
+                  description={service.shortDescription}
+                  link={`/services/${service.slug.current}`}
+                  color={service.bgColor || 'bg-brand-teal'}
+                  index={index}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -256,6 +229,7 @@ const Index = () => {
                   image={project.image ? project.image : ''}
                   slug={project.slug.current}
                   index={index}
+                  comingSoon={project.comingSoon}
                 />
               ))}
             </div>

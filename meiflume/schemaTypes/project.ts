@@ -27,6 +27,8 @@ const project = {
         list: [
           'Website',
           'WebApp Development',
+          'Web Development',
+          'Web Application',
           'Mobile Development',
           'Desktop Development',
           'E-commerce',
@@ -37,6 +39,21 @@ const project = {
         ]
       },
       validation: (Rule: any) => Rule.required()
+    },
+    {
+      name: 'comingSoon',
+      title: 'Coming Soon',
+      type: 'boolean',
+      description:
+        'Set to true while the project is still in progress. The card will show a "Coming Soon" overlay and will not link to a live project page.',
+      initialValue: false
+    },
+    {
+      name: 'featured',
+      title: 'Featured on Homepage',
+      type: 'boolean',
+      description: 'Show this project in the "Featured Projects" section on the homepage.',
+      initialValue: false
     },
     {
       name: 'image',

@@ -47,14 +47,20 @@ const App = () => (
             name: "MeiFlume",
             url: "https://meiflume.com",
             logo: "https://meiflume.com/logo.png",
-            description: "MeiFlume - Professional Web Development and Design Services",
+            description: "MeiFlume - Web Development, Software Development and Web App Development Services in Paarl & Cape Town",
             address: {
-              streetAddress: "",
-              addressLocality: "Lisbon",
-              addressRegion: "Lisbon",
-              postalCode: "",
-              addressCountry: "PT"
-            }
+              addressLocality: "Paarl",
+              addressRegion: "Western Cape",
+              postalCode: "7646",
+              addressCountry: "ZA"
+            },
+            areaServed: ["Paarl", "Cape Town", "Western Cape", "Winelands", "South Africa"],
+            geo: {
+              latitude: "-33.7246",
+              longitude: "18.9596"
+            },
+            telephone: "+27720302071",
+            email: "info@meiflume.com"
           }} />
           <Analytics />
           <HeatmapTracking />

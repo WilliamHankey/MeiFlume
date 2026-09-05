@@ -7,9 +7,10 @@ import ContactCTA from '@/components/ContactCTA';
 import { PortfolioItemSchema, WebSiteSchema } from '../components/StructuredData';
 import { OptimizedImage } from '@/components/OptimizedImage';
 import { getProjects, SanityProject } from '@/api/projects';
+import { getPortfolioCategories } from '@/api/portfolioCategories';
 import { urlFor } from '@/lib/sanity';
 
-const categories = [
+const fallbackCategories = [
   "All",
   "Web Development",
   "Mobile Development",
@@ -20,13 +21,29 @@ const categories = [
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [projects, setProjects] = useState<SanityProject[]>([]);
+  const [categories, setCategories] = useState<string[]>(fallbackCategories);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const data = await getProjects();
+        const [data, categoryData] = await Promise.all([
+          getProjects(),
+          getPortfolioCategories(),
+        ]);
         setProjects(data);
+
+        if (categoryData && categoryData.length > 0) {
+          const names = categoryData
+            .map((c) => c.name)
+            .filter(Boolean)
+            .filter((n) => data.some((item) => item.category === n));
+          setCategories(["All", ...names]);
+        } else {
+          // Fall back to categories derived from the projects themselves
+          const derived = Array.from(new Set(data.map((item) => item.category))).filter(Boolean);
+          setCategories(["All", ...derived]);
+        }
       } catch (error) {
         console.error('Error fetching projects:', error);
       } finally {
@@ -116,12 +133,19 @@ const Portfolio = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group overflow-hidden rounded-2xl shadow-lg bg-white hover-lift"
                 >
-                  <div className="aspect-[16/9] overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden relative">
                     <OptimizedImage 
                       src={urlFor(item.image).url()} 
                       alt={item.title}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
+                    {item.comingSoon && (
+                      <div className="absolute inset-0 bg-brand-dark/70 backdrop-blur-[2px] flex items-center justify-center">
+                        <span className="inline-flex items-center px-6 py-2.5 bg-white text-brand-dark font-bold text-lg tracking-widest uppercase rounded-full shadow-lg">
+                          Coming Soon
+                        </span>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="p-6">
@@ -132,13 +156,19 @@ const Portfolio = () => {
                     </p>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium">Client: {item.client}</span>
-                      <Link 
-                        to={`/portfolio/${item.slug.current}`} 
-                        className="text-brand-teal flex items-center gap-1 text-sm font-medium hover:underline"
-                      >
-                        View Details
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
+                      {item.comingSoon ? (
+                        <span className="text-sm font-medium text-gray-400 flex items-center gap-1">
+                          Coming soon
+                        </span>
+                      ) : (
+                        <Link 
+                          to={`/portfolio/${item.slug.current}`} 
+                          className="text-brand-teal flex items-center gap-1 text-sm font-medium hover:underline"
+                        >
+                          View Details
+                          <ArrowRight className="h-3 w-3" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </motion.div>

@@ -1,105 +1,48 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Globe, PenTool, BrainCircuit, MessageSquare, ArrowRight, CheckCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ServiceSchema, WebSiteSchema } from '../components/StructuredData';
 import { OptimizedImage } from '@/components/OptimizedImage';
-
-interface ServiceProps {
-  id: string;
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  features: string[];
-  imageUrl: string;
-  bgColor: string;
-}
-
-const services: ServiceProps[] = [
-  {
-    id: "software",
-    icon: Code,
-    title: "Software Development",
-    description: "Custom software solutions tailored to your specific business needs, from mobile apps to enterprise platforms.",
-    features: [
-      "Custom mobile app development (iOS & Android)",
-      "Enterprise software solutions",
-      "Legacy system modernization",
-      "Cloud application development",
-      "API development and integration"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-    bgColor: "bg-blue-500"
-  },
-  {
-    id: "web",
-    icon: Globe,
-    title: "Web Development",
-    description: "Responsive, fast-loading websites and web applications built with cutting-edge technologies.",
-    features: [
-      "Responsive website design & development",
-      "E-commerce solutions",
-      "CMS implementation (WordPress, Shopify, etc.)",
-      "Progressive Web Apps (PWAs)",
-      "Performance optimization & SEO"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-    bgColor: "bg-indigo-500"
-  },
-  {
-    id: "design",
-    icon: PenTool,
-    title: "Graphic Design",
-    description: "Brand identity, UI/UX design, and visual assets that communicate your brand's unique value.",
-    features: [
-      "Brand identity design",
-      "UI/UX design for web & mobile",
-      "Print & digital marketing materials",
-      "Illustration & iconography",
-      "Motion graphics & animation"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-    bgColor: "bg-purple-500"
-  },
-  {
-    id: "brand",
-    icon: BrainCircuit,
-    title: "Brand Strategy",
-    description: "Strategic positioning and messaging that helps your brand stand out in a crowded marketplace.",
-    features: [
-      "Brand positioning & messaging",
-      "Competitive analysis",
-      "Customer persona development",
-      "Brand voice & tone guidelines",
-      "Marketing strategy development"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-    bgColor: "bg-pink-500"
-  },
-  {
-    id: "social",
-    icon: MessageSquare,
-    title: "Social Media Services",
-    description: "Content creation, community management, and growth strategies for major social platforms.",
-    features: [
-      "Social media strategy development",
-      "Content creation & curation",
-      "Community management",
-      "Paid social advertising",
-      "Analytics & performance reporting"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-    bgColor: "bg-rose-500"
-  }
-];
+import { getServices, type SanityService } from '@/api/services';
+import { getServiceIcon } from '@/lib/icons';
+import { urlFor } from '@/lib/sanity';
+import { fallbackServices } from '@/data/services';
 
 const Services = () => {
+  const [services, setServices] = useState<SanityService[]>(fallbackServices);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getServices()
+      .then((data) => {
+        if (!cancelled && data && data.length > 0) setServices(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching services:', error);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <>
+      <Helmet>
+        <title>Our Services | Web Development & Software in Paarl, Cape Town | MeiFlume</title>
+        <meta name="description" content="Web development, software development, web app development, branding and design services for businesses in Paarl, Cape Town and the Western Cape." />
+        <meta property="og:title" content="Our Services | MeiFlume - Paarl & Cape Town" />
+        <meta property="og:description" content="Web development, software development, web app development, branding and design services for businesses in Paarl, Cape Town and the Western Cape." />
+        <meta property="og:url" content="https://meiflume.com/services" />
+      </Helmet>
       <ServiceSchema
         data={{
-          name: "Digital Transformation Services",
-          description: "Comprehensive digital transformation solutions to help businesses thrive in the modern digital landscape.",
+          name: "Web & Software Development Services in Paarl & Cape Town",
+          description: "Comprehensive web development, software development, and web app development solutions for businesses in Paarl, Cape Town, and the Winelands.",
           provider: {
             '@type': 'Organization',
             name: 'MeiFlume'
@@ -108,9 +51,9 @@ const Services = () => {
       />
       <WebSiteSchema
         data={{
-          name: "MeiFlume Services",
+          name: "MeiFlume Services - Paarl & Cape Town",
           url: "https://meiflume.com/services",
-          description: "Explore our comprehensive range of digital transformation services including web development, software development, brand strategy, and more."
+          description: "Explore MeiFlume's comprehensive digital services including web development, software development, web app development, brand strategy, and more — available across Paarl, Cape Town, and the Winelands."
         }}
       />
       <div className="pt-28 bg-white">
@@ -125,17 +68,26 @@ const Services = () => {
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
               <p className="text-xl text-muted-foreground">
-                Comprehensive digital transformation solutions tailored to meet your business objectives and drive growth.
+                Web development, software development, and web app services for businesses across
+                Paarl, Cape Town, and the wider Winelands — tailored to meet your objectives and
+                drive growth.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Individual Services */}
-        {services.map((service, index) => (
-          <section 
-            key={service.id} 
-            id={service.id}
+        {services.map((service, index) => {
+          const Icon = getServiceIcon(service.icon);
+          const imageSrc = service.bannerImage
+            ? typeof service.bannerImage === 'string'
+              ? service.bannerImage
+              : urlFor(service.bannerImage).width(1200).quality(85).url()
+            : '';
+          return (
+          <section
+            key={service._id}
+            id={service.slug.current}
             className={`py-20 ${index % 2 === 1 ? 'bg-brand-gray' : ''}`}
           >
             <div className="container mx-auto px-4 md:px-6">
@@ -147,29 +99,31 @@ const Services = () => {
                   viewport={{ once: true }}
                   className="w-full lg:w-1/2"
                 >
-                  <div className={`${service.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
-                    <service.icon className="h-8 w-8 text-white" />
+                  <div className={`${service.bgColor || 'bg-brand-teal'} w-16 h-16 rounded-2xl flex items-center justify-center mb-6`}>
+                    <Icon className="h-8 w-8 text-white" />
                   </div>
                   <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
                   <p className="text-lg text-muted-foreground mb-6">
-                    {service.description}
+                    {service.description || service.shortDescription}
                   </p>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle className="h-6 w-6 text-brand-teal shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {service.features && service.features.length > 0 && (
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <CheckCircle className="h-6 w-6 text-brand-teal shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <Button className="bg-brand-teal hover:bg-brand-teal/90" asChild>
-                    <Link to={`/services/${service.id}`}>
+                    <Link to={`/services/${service.slug.current}`}>
                       Learn More
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -179,9 +133,9 @@ const Services = () => {
                 >
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-brand-teal/20 rounded-2xl transform rotate-2" />
-                    <OptimizedImage 
-                      src={service.imageUrl} 
-                      alt={service.title}
+                    <OptimizedImage
+                      src={imageSrc}
+                      alt={`${service.title} in Paarl & Cape Town`}
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={index < 2}
                     />
@@ -190,8 +144,9 @@ const Services = () => {
               </div>
             </div>
           </section>
-        ))}
-        
+          );
+        })}
+
         {/* CTA Section */}
         <section className="py-20 bg-brand-teal text-white">
           <div className="container mx-auto px-4 md:px-6 text-center">
@@ -204,7 +159,8 @@ const Services = () => {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
               <p className="text-xl text-white/80 mb-8">
-                Contact us today to discuss your project requirements and learn how we can help you achieve your business goals.
+                From Paarl to Cape Town, contact us today to discuss your project requirements and
+                learn how we can help you achieve your business goals.
               </p>
               <Button size="lg" className="bg-white text-brand-teal hover:bg-white/90" asChild>
                 <Link to="/contact">

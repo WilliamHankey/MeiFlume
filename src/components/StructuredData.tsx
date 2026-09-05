@@ -6,12 +6,17 @@ interface OrganizationSchema {
   logo: string;
   description: string;
   address?: {
-    streetAddress: string;
+    streetAddress?: string;
     addressLocality: string;
     addressRegion: string;
-    postalCode: string;
+    postalCode?: string;
     addressCountry: string;
   };
+  areaServed?: string[];
+  geo?: { latitude: string; longitude: string };
+  sameAs?: string[];
+  telephone?: string;
+  email?: string;
 }
 
 interface WebSiteSchema {
@@ -52,12 +57,25 @@ interface PortfolioItemSchema {
 export const OrganizationSchema = ({ data }: { data: OrganizationSchema }) => {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
     name: data.name,
     url: data.url,
     logo: data.logo,
     description: data.description,
-    ...(data.address && { address: { '@type': 'PostalAddress', ...data.address } })
+    ...(data.telephone && { telephone: data.telephone }),
+    ...(data.email && { email: data.email }),
+    ...(data.address && { address: { '@type': 'PostalAddress', ...data.address } }),
+    ...(data.areaServed && {
+      areaServed: data.areaServed.map((area) => ({ '@type': 'Place', name: area }))
+    }),
+    ...(data.geo && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: data.geo.latitude,
+        longitude: data.geo.longitude
+      }
+    }),
+    ...(data.sameAs && { sameAs: data.sameAs })
   };
 
   return (

@@ -22,7 +22,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Digital Transformation Experts
+              Web Development & Software Company in Paarl & Cape Town
             </motion.span>
             
             <motion.h1 
@@ -41,8 +41,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              We help businesses transform and thrive in the digital age with innovative
-              solutions tailored to meet your unique needs and challenges.
+              We're a web development, software development and web app development company
+              based in Paarl, proudly serving businesses across Cape Town and the Western Cape
+              with custom solutions tailored to your unique needs.
             </motion.p>
             
             <motion.div 

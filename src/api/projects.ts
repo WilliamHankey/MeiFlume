@@ -22,27 +22,35 @@ export interface SanityProject {
   services: string[];
   technologies: string[];
   gallery: string[];
+  comingSoon?: boolean;
+  featured?: boolean;
 }
+
+const PROJECT_PROJECTION = `
+  _id,
+  title,
+  slug,
+  category,
+  image,
+  link,
+  description,
+  client,
+  challenge,
+  solution,
+  timeline,
+  date,
+  results,
+  services,
+  technologies,
+  comingSoon,
+  featured,
+  "gallery": gallery[].asset->url
+`;
 
 export async function getProjects(): Promise<SanityProject[]> {
   return client.fetch(`
     *[_type == "project"] {
-      _id,
-      title,
-      slug,
-      category,
-      image,
-      link,
-      description,
-      client,
-      challenge,
-      solution,
-      timeline,
-      date,
-      results,
-      services,
-      technologies,
-      "gallery": gallery[].asset->url
+      ${PROJECT_PROJECTION}
     }
   `);
 }
@@ -50,22 +58,7 @@ export async function getProjects(): Promise<SanityProject[]> {
 export async function getProjectBySlug(slug: string): Promise<SanityProject | null> {
   return client.fetch(`
     *[_type == "project" && slug.current == $slug][0] {
-      _id,
-      title,
-      slug,
-      category,
-      image,
-      link,
-      description,
-      client,
-      challenge,
-      solution,
-      timeline,
-      date,
-      results,
-      services,
-      technologies,
-      "gallery": gallery[].asset->url
+      ${PROJECT_PROJECTION}
     }
   `, { slug });
 } 
